@@ -2,4 +2,4 @@
 
 Requires Godot 4.3 but older version could work as well.
 
-https://github.com/user-attachments/assets/c34784ab-5491-43d4-8fe8-898542b5e658
+https://github.com/user-attachments/assets/49781e76-d070-4fd9-ba80-4b2feefa0553
