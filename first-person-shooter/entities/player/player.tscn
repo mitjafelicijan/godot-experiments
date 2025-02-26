@@ -29,9 +29,3 @@ target_position = Vector3(0, 0, -1000)
 hit_back_faces = false
 debug_shape_custom_color = Color(0.968627, 0.219608, 1, 1)
 debug_shape_thickness = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
