@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3b5i2m7lg0g2"]
+
+[ext_resource type="PackedScene" uid="uid://bbf3liojfdrwl" path="res://entities/player/player.tscn" id="1_0idoi"]
+[ext_resource type="Script" path="res://main.gd" id="1_0m35f"]
+[ext_resource type="PackedScene" uid="uid://q14vul3uxrjt" path="res://entities/fireplace/fire.tscn" id="3_l8144"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26lf8"]
+albedo_color = Color(0.831951, 0, 0.410818, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svll2"]
+albedo_color = Color(0.54202, 0.658982, 0.370247, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6eawg"]
+
+[sub_resource type="Sky" id="Sky_f6ow2"]
+sky_material = SubResource("PanoramaSkyMaterial_6eawg")
+
+[sub_resource type="Environment" id="Environment_7bdkv"]
+background_mode = 2
+sky = SubResource("Sky_f6ow2")
+ambient_light_color = Color(0.738031, 0.738031, 0.738031, 1)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_0m35f")
+
+[node name="Player" parent="." instance=ExtResource("1_0idoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 9)
+
+[node name="Sandbox" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sandbox"]
+size = Vector3(30, 0.001, 30)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Sandbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+size = Vector3(30, 0.001, 30)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Sandbox"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 15, 5.5, 0)
+size = Vector3(11, 0.001, 30)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Sandbox"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -15, 5.5, 0)
+size = Vector3(11, 0.001, 30)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Sandbox"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 5.5, 15)
+size = Vector3(11, 0.001, 30)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Sandbox"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 5.5, -15)
+size = Vector3(11, 0.001, 30)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Sandbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_26lf8")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Sandbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, -5)
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_svll2")
+
+[node name="Fire1" parent="Sandbox" instance=ExtResource("3_l8144")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81703, 0)
+light_energy = 2.096
+omni_range = 7.038
+
+[node name="Fire2" parent="Sandbox" instance=ExtResource("3_l8144")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0047, 2.02031, -2.20975)
+light_color = Color(0.235844, 0.459385, 1, 1)
+light_energy = 2.826
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Sandbox"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.01, 8.65841, 0)
+light_energy = 2.388
+spot_range = 10.687
+spot_angle = 31.85
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Sandbox"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.01, 8.65841, -14.6318)
+light_color = Color(1, 0.501961, 0.219608, 1)
+light_energy = 8.306
+spot_range = 10.687
+spot_angle = 31.85
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7bdkv")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://q14vul3uxrjt"]
+
+[ext_resource type="Script" path="res://entities/fireplace/fire.gd" id="1_bb8uc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwg1d"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uak8p"]
+material = SubResource("StandardMaterial3D_lwg1d")
+size = Vector2(6, 6)
+
+[node name="Fireplace" type="OmniLight3D"]
+light_color = Color(1, 1, 0.47451, 1)
+script = ExtResource("1_bb8uc")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1)
+visible = false
+mesh = SubResource("PlaneMesh_uak8p")
