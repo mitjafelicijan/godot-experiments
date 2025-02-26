@@ -12,6 +12,7 @@ var camera_accel:float = 40
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var raycast = $Head/RayCast3D
 
 func _ready() -> void:
 	pass
@@ -57,5 +58,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
+	
+	var space = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position - camera.global_transform.basis.z * 100)
+	var collision = space.intersect_ray(query)
+	if collision:
+		SignalBus.emit_signal("target_changed", collision.collider.name)
+	else:
+		SignalBus.emit_signal("target_changed", "")
 	
 	move_and_slide()

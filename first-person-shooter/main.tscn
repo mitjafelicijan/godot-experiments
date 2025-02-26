@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7euldepo1g2x"]
+[gd_scene load_steps=14 format=3 uid="uid://c7euldepo1g2x"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1yup6"]
 [ext_resource type="PackedScene" uid="uid://kjvn36ynhu1b" path="res://entities/environment/environment.tscn" id="2_c8huh"]
 [ext_resource type="PackedScene" uid="uid://bbf3liojfdrwl" path="res://entities/player/player.tscn" id="3_qsdjd"]
 [ext_resource type="PackedScene" uid="uid://be73b33g78wuw" path="res://entities/enemy/enemy.tscn" id="4_iil1r"]
 [ext_resource type="PackedScene" uid="uid://plhhj5aqxgbo" path="res://interface/help/help.tscn" id="5_ly0do"]
+[ext_resource type="PackedScene" uid="uid://8vybg70oeq4i" path="res://interface/hud/hud.tscn" id="5_vrp88"]
 
 [sub_resource type="Gradient" id="Gradient_lx4wy"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -74,11 +75,12 @@ metadata/_edit_lock_ = true
 [node name="Environment" parent="." instance=ExtResource("2_c8huh")]
 
 [node name="Player" parent="." instance=ExtResource("3_qsdjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.24764)
 
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -15)
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("4_iil1r")]
+[node name="Enemy1" parent="Enemies" instance=ExtResource("4_iil1r")]
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("4_iil1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
@@ -88,5 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("4_iil1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="HUD" parent="." instance=ExtResource("5_vrp88")]
 
 [node name="Help" parent="." instance=ExtResource("5_ly0do")]
