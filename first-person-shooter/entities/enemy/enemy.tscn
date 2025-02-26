@@ -8,7 +8,7 @@ albedo_color = Color(1, 0.18, 0.18, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7w4y"]
 size = Vector3(1, 2, 0.5)
 
-[node name="Enemy" type="StaticBody3D"]
+[node name="Enemy" type="StaticBody3D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_g7wgw")
 

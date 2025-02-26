@@ -14,14 +14,21 @@ var camera_accel:float = 40
 @onready var camera = $Head/Camera3D
 @onready var raycast = $Head/RayCast3D
 
-func _ready() -> void:
-	pass
+func check_for_collision():
+	var space = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position - camera.global_transform.basis.z * 100)
+	return space.intersect_ray(query)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		head.rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+	
+	if Input.is_action_just_pressed("shoot"):
+		var collision = check_for_collision()
+		if collision and collision.collider.is_in_group("enemy") and collision.collider.has_method("take_hit"):
+			collision.collider.take_hit()
 
 func _process(delta):
 	var stick_right_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
@@ -59,9 +66,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 	
-	var space = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position - camera.global_transform.basis.z * 100)
-	var collision = space.intersect_ray(query)
+	var collision = check_for_collision()
 	if collision:
 		SignalBus.emit_signal("target_changed", collision.collider)
 	else:
