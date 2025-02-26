@@ -1,3 +1,3 @@
 extends Node
 
-signal target_changed(target_name)
+signal target_changed(target_collider)

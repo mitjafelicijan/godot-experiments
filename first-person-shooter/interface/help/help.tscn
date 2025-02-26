@@ -12,10 +12,10 @@ offset_bottom = 66.0
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-text = "[x] exit"
+text = "(e)xit"
 
 [node name="FullscreenLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-text = "[f] fullscreen"
+text = "(f)ullscreen"

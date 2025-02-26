@@ -9,6 +9,7 @@ albedo_color = Color(1, 0.18, 0.18, 1)
 size = Vector3(1, 2, 0.5)
 
 [node name="Enemy" type="StaticBody3D"]
+collision_layer = 2
 script = ExtResource("1_g7wgw")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]

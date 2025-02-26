@@ -63,8 +63,8 @@ func _physics_process(delta: float) -> void:
 	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position - camera.global_transform.basis.z * 100)
 	var collision = space.intersect_ray(query)
 	if collision:
-		SignalBus.emit_signal("target_changed", collision.collider.name)
+		SignalBus.emit_signal("target_changed", collision.collider)
 	else:
-		SignalBus.emit_signal("target_changed", "")
+		SignalBus.emit_signal("target_changed", null)
 	
 	move_and_slide()
