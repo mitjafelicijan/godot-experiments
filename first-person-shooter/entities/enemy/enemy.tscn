@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://be73b33g78wuw"]
+
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_g7wgw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbum4"]
+albedo_color = Color(1, 0.18, 0.18, 1)
+
+[node name="Enemy" type="Node3D"]
+script = ExtResource("1_g7wgw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(1, 2, 1)
+material = SubResource("StandardMaterial3D_nbum4")

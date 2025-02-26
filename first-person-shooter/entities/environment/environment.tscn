@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://kjvn36ynhu1b"]
+
+[ext_resource type="Script" path="res://entities/environment/environment.gd" id="1_d1ynd"]
+[ext_resource type="Texture2D" uid="uid://xfiqgnrspa7h" path="res://assets/skyboxes/epic_blue_sunset.png" id="1_g4n51"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4yudn"]
+panorama = ExtResource("1_g4n51")
+
+[sub_resource type="Sky" id="Sky_suqpd"]
+sky_material = SubResource("PanoramaSkyMaterial_4yudn")
+
+[sub_resource type="Environment" id="Environment_mat7w"]
+background_mode = 2
+sky = SubResource("Sky_suqpd")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Environment" type="Node3D"]
+script = ExtResource("1_d1ynd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mat7w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+shadow_enabled = true

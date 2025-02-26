@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://plhhj5aqxgbo"]
+
+[node name="Help" type="CanvasLayer"]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 119.0
+offset_bottom = 66.0
+
+[node name="ExitLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "[x] exit"
+
+[node name="FullscreenLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "[f] fullscreen"
